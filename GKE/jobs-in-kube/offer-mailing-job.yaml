@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: offer-mailing-job
+spec:
+  template:
+    metadata:
+      name: offer-mailing-job
+      labels:
+        preemptive: "true"
+    spec:
+      containers:
+      - name: offer
+        image: gcr.io/spikey-gke/offer-updates:offers
+      nodeSelector:
+        preemptive: "true"
+      restartPolicy: Never

@@ -1,0 +1,14 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: weekly-offer-cronjob
+spec:
+  schedule: ""
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: weeky-offer
+            image: gcr.io/spikey-gke/offer-updates:weekly-offers
+          restartPolicy: OnFailure
